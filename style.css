@@ -11,11 +11,35 @@
     --bg-off-white: #F8FAFC;
     --border-color: #E2E8F0;
     --success-green: #10B981;
+    --btn-primary-text: #FFFFFF;
+    --navbar-bg: rgba(255, 255, 255, 0.92);
+    --card-bg: #FFFFFF;
+    --card-border: #E2E8F0;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
     --shadow-lg: 0 10px 25px -5px rgba(10, 102, 194, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
     --nav-height: 72px;
+}
+
+[data-theme="dark"] {
+    --primary-blue: #38BDF8;
+    --primary-blue-hover: #0EA5E9;
+    --primary-blue-light: #60A5FA;
+    --light-blue: rgba(56, 189, 248, 0.14);
+    --light-blue-dark: rgba(56, 189, 248, 0.24);
+    --text-dark: #F8FAFC;
+    --text-light: #94A3B8;
+    --bg-white: #0F172A;
+    --bg-off-white: #020617;
+    --border-color: #1E293B;
+    --btn-primary-text: #0F172A;
+    --navbar-bg: rgba(15, 23, 42, 0.88);
+    --card-bg: #1E293B;
+    --card-border: #334155;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(56, 189, 248, 0.15);
 }
 
 *,
@@ -37,6 +61,7 @@ body {
     background-color: var(--bg-white);
     line-height: 1.6;
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -171,7 +196,7 @@ button {
 
 .btn-primary {
     background-color: var(--primary-blue);
-    color: white;
+    color: var(--btn-primary-text);
 }
 
 .btn-primary:hover {
@@ -192,7 +217,7 @@ button {
 
 .btn-outline {
     background-color: transparent;
-    border-color: var(--border-color);
+    border-color: var(--card-border);
     color: var(--text-dark);
 }
 
@@ -210,7 +235,7 @@ button {
 
 .btn-primary-outline:hover {
     background-color: var(--primary-blue);
-    color: white;
+    color: var(--btn-primary-text);
 }
 
 .btn-small {
@@ -223,7 +248,7 @@ button {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.92);
+    background-color: var(--navbar-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     z-index: 1000;
@@ -232,7 +257,7 @@ button {
 }
 
 .navbar.scrolled {
-    border-bottom-color: var(--border-color);
+    border-bottom-color: var(--card-border);
     box-shadow: var(--shadow-sm);
 }
 
@@ -289,6 +314,33 @@ button {
 .nav-links a:hover,
 .nav-links a.active {
     color: var(--primary-blue);
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.theme-toggle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--light-blue);
+    color: var(--primary-blue);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 1px solid var(--card-border);
+}
+
+.theme-toggle:hover {
+    background: var(--primary-blue);
+    color: var(--btn-primary-text);
+    transform: rotate(15deg) scale(1.05);
 }
 
 .menu-toggle {
@@ -464,12 +516,12 @@ button {
 }
 
 .highlight-card {
-    background: var(--bg-white);
+    background: var(--card-bg);
     padding: 1.75rem 1.5rem;
     border-radius: 12px;
     box-shadow: var(--shadow-md);
     text-align: center;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--card-border);
     transition: var(--transition);
 }
 
@@ -505,11 +557,11 @@ button {
 }
 
 .skill-category {
-    background: var(--bg-white);
+    background: var(--card-bg);
     border-radius: 12px;
     padding: 2rem;
     box-shadow: var(--shadow-md);
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--card-border);
     transition: var(--transition);
 }
 
@@ -561,7 +613,7 @@ button {
 
 .skill-category:hover .skill-tags span {
     background-color: var(--primary-blue);
-    color: white;
+    color: var(--btn-primary-text);
 }
 
 /* Projects Section */
@@ -572,11 +624,11 @@ button {
 }
 
 .project-card {
-    background: var(--bg-white);
+    background: var(--card-bg);
     border-radius: 16px;
     overflow: hidden;
     box-shadow: var(--shadow-md);
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--card-border);
     transition: var(--transition);
     display: flex;
     flex-direction: column;
