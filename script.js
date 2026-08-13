@@ -149,13 +149,40 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
+            // Validate form input before submitting
+            if (!contactForm.checkValidity()) {
+                contactForm.reportValidity();
+                return;
+            }
+
             const btn = contactForm.querySelector('button');
             const originalHTML = btn.innerHTML;
 
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             btn.disabled = true;
 
-            setTimeout(() => {
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+
+            fetch("https://formsubmit.co/ajax/sjchauhan2006@gmail.com", {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error('Form submission failed');
+            })
+            .then(data => {
                 btn.innerHTML = '<i class="fas fa-check"></i> Sent Successfully!';
                 btn.style.backgroundColor = '#10B981';
                 btn.style.borderColor = '#10B981';
@@ -167,7 +194,60 @@ document.addEventListener('DOMContentLoaded', () => {
                     btn.style.borderColor = '';
                     btn.disabled = false;
                 }, 3000);
-            }, 1500);
+            })
+            .catch(error => {
+                console.error('Error submitting form:', error);
+                btn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Failed to Send';
+                btn.style.backgroundColor = '#EF4444';
+                btn.style.borderColor = '#EF4444';
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                    btn.style.backgroundColor = '';
+                    btn.style.borderColor = '';
+                    btn.disabled = false;
+                }, 3000);
+            });
         });
     }
+
+    // Project accordion toggle logic
+    const toggleButtons = document.querySelectorAll('.project-toggle-btn');
+    toggleButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const card = btn.closest('.project-card');
+            const collapseSection = card.querySelector('.project-details-collapse');
+            const isCurrentlyExpanded = btn.getAttribute('aria-expanded') === 'true';
+
+            if (!isCurrentlyExpanded) {
+                // Close all other open project collapses first
+                toggleButtons.forEach(otherBtn => {
+                    if (otherBtn !== btn) {
+                        const otherCard = otherBtn.closest('.project-card');
+                        const otherCollapse = otherCard.querySelector('.project-details-collapse');
+                        
+                        otherBtn.setAttribute('aria-expanded', 'false');
+                        otherBtn.classList.remove('active');
+                        otherCollapse.classList.remove('open');
+                        otherCollapse.style.maxHeight = '0px';
+                        otherBtn.innerHTML = 'View Details <i class="fas fa-chevron-down"></i>';
+                    }
+                });
+
+                // Open this one
+                btn.setAttribute('aria-expanded', 'true');
+                btn.classList.add('active');
+                collapseSection.classList.add('open');
+                collapseSection.style.maxHeight = collapseSection.scrollHeight + 'px';
+                btn.innerHTML = 'Hide Details <i class="fas fa-chevron-down"></i>';
+            } else {
+                // Close this one
+                btn.setAttribute('aria-expanded', 'false');
+                btn.classList.remove('active');
+                collapseSection.classList.remove('open');
+                collapseSection.style.maxHeight = '0px';
+                btn.innerHTML = 'View Details <i class="fas fa-chevron-down"></i>';
+            }
+        });
+    });
 });

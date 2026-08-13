@@ -621,6 +621,7 @@ button {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
     gap: 2rem;
+    align-items: start;
 }
 
 .project-card {
@@ -699,6 +700,57 @@ button {
     margin-bottom: 0.75rem;
 }
 
+/* Project Toggle Button styling */
+.project-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.6rem 1rem;
+    margin-bottom: 0.5rem;
+    background-color: var(--light-blue);
+    color: var(--primary-blue);
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: var(--transition);
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.project-toggle-btn:hover {
+    background-color: var(--primary-blue);
+    color: var(--btn-primary-text);
+}
+
+.project-toggle-btn i {
+    transition: transform 0.3s ease;
+}
+
+.project-toggle-btn.active i {
+    transform: rotate(180deg);
+}
+
+/* Collapsible container details */
+.project-details-collapse {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, margin-top 0.3s ease;
+}
+
+.project-details-collapse.open {
+    opacity: 1;
+    margin-top: 1rem;
+}
+
+.project-collapse-content {
+    padding-top: 0.25rem;
+    display: flex;
+    flex-direction: column;
+}
+
 .project-desc {
     color: var(--text-light);
     margin-bottom: 1rem;
@@ -749,6 +801,8 @@ button {
     display: flex;
     gap: 1.25rem;
     flex-wrap: wrap;
+    margin-top: auto;
+    padding-top: 1.25rem;
 }
 
 .btn-icon {
