@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const target = document.querySelector(href);
             if (target) {
-                const navHeight = navbar.offsetHeight;
+                const navHeight = navbar.offsetHeight + 30;
                 const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
 
                 window.scrollTo({
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Active nav link highlighting
         let current = '';
         sections.forEach(section => {
-            const sectionTop = section.offsetTop - navbar.offsetHeight - 100;
+            const sectionTop = section.offsetTop - navbar.offsetHeight - 120;
             if (scrollY >= sectionTop) {
                 current = section.getAttribute('id');
             }
