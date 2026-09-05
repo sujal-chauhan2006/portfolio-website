@@ -40,6 +40,7 @@
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#experience">Experience</a></li>
+                <li><a href="#resume" class="open-resume-trigger"><i class="fas fa-file-alt"></i> Resume</a></li>
                 <li><a href="#contact" class="btn-primary-outline btn-small">Contact</a></li>
             </ul>
             <div class="nav-actions">
@@ -66,9 +67,8 @@
             </p>
             <div class="hero-buttons">
                 <a href="#projects" class="btn-primary"><i class="fas fa-folder-open"></i> View Projects</a>
-                <a href="Assests/Sujal_Chauhan_Resume.docx" class="btn-secondary" download><i
-                        class="fas fa-download"></i> Download Resume</a>
-                <a href="#contact" class="btn-outline"><i class="fas fa-paper-plane"></i> Contact Me</a>
+                <button type="button" class="btn-secondary open-resume-trigger"><i class="fas fa-eye"></i> Preview Resume</button>
+                <a href="Assests/Sujal_Chauhan_Resume.docx" class="btn-outline" download><i class="fas fa-download"></i> Download Resume</a>
             </div>
             <div class="hero-stats">
                 <div class="stat-item">
@@ -546,6 +546,230 @@
             <p class="footer-copy">&copy; 2026 Sujal Chauhan. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Resume Preview Modal -->
+    <div class="resume-modal" id="resumeModal" role="dialog" aria-modal="true" aria-labelledby="resumeModalTitle" hidden>
+        <div class="resume-modal-overlay" id="resumeModalOverlay"></div>
+        <div class="resume-modal-container">
+            <!-- Modal Top Bar -->
+            <div class="resume-modal-header">
+                <div class="resume-modal-title-group">
+                    <i class="fas fa-file-alt"></i>
+                    <h3 id="resumeModalTitle">Resume Preview</h3>
+                    <span class="resume-badge">Sujal Chauhan</span>
+                </div>
+                <div class="resume-modal-actions">
+                    <a href="Assests/Sujal_Chauhan_Resume.docx" download class="btn-modal-action primary">
+                        <i class="fas fa-download"></i>
+                        <span>Download Resume (.docx)</span>
+                    </a>
+                    <button class="btn-modal-action secondary" id="printResumeBtn" type="button">
+                        <i class="fas fa-print"></i>
+                        <span>Print / Save PDF</span>
+                    </button>
+                    <button class="btn-modal-close" id="closeResumeModal" type="button" aria-label="Close resume preview">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Modal Body: Interactive Paper Resume -->
+            <div class="resume-modal-body">
+                <div class="resume-paper" id="resumePaper">
+                    <!-- Resume Header / Contact Info -->
+                    <header class="rp-header">
+                        <div class="rp-header-main">
+                            <h1 class="rp-name">SUJAL CHAUHAN</h1>
+                            <p class="rp-title">Aspiring Machine Learning Engineer | Data Science Enthusiast</p>
+                        </div>
+                        <div class="rp-contact-grid">
+                            <a href="mailto:sjchauhan2006@gmail.com" class="rp-contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>sjchauhan2006@gmail.com</span>
+                            </a>
+                            <div class="rp-contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>India</span>
+                            </div>
+                            <a href="https://www.linkedin.com/in/sujal-chauhan-0857a2288/" target="_blank" rel="noopener noreferrer" class="rp-contact-item">
+                                <i class="fab fa-linkedin"></i>
+                                <span>linkedin.com/in/sujal-chauhan</span>
+                            </a>
+                            <a href="https://github.com/sujal-chauhan2006" target="_blank" rel="noopener noreferrer" class="rp-contact-item">
+                                <i class="fab fa-github"></i>
+                                <span>github.com/sujal-chauhan2006</span>
+                            </a>
+                        </div>
+                    </header>
+
+                    <!-- Summary -->
+                    <section class="rp-section">
+                        <h2 class="rp-section-title"><i class="fas fa-user"></i> Professional Summary</h2>
+                        <p class="rp-text">
+                            Motivated <strong>BCA Graduate</strong> with a strong foundation in computer science and mathematics, deeply passionate about Machine Learning and Data Science. Proficient in exploratory data analysis (EDA), predictive modeling, feature engineering, and deploying interactive ML web applications using Python, Scikit-Learn, XGBoost, and Streamlit. Dedicated to solving complex business challenges with data-driven solutions.
+                        </p>
+                    </section>
+
+                    <!-- Education -->
+                    <section class="rp-section">
+                        <h2 class="rp-section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
+                        <div class="rp-item">
+                            <div class="rp-item-header">
+                                <div>
+                                    <h3 class="rp-item-title">Bachelor of Computer Applications (BCA)</h3>
+                                    <p class="rp-item-sub">Computer Science & Data Fundamentals</p>
+                                </div>
+                                <div class="rp-item-meta">
+                                    <span class="rp-badge">CGPA: 8.1 / 10</span>
+                                    <span class="rp-date">Graduate</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Technical Skills -->
+                    <section class="rp-section">
+                        <h2 class="rp-section-title"><i class="fas fa-code"></i> Technical Skills</h2>
+                        <div class="rp-skills-container">
+                            <div class="rp-skill-row">
+                                <span class="rp-skill-cat"><i class="fas fa-terminal"></i> Languages:</span>
+                                <div class="rp-skill-tags">
+                                    <span class="rp-tag">Python</span>
+                                    <span class="rp-tag">SQL</span>
+                                </div>
+                            </div>
+                            <div class="rp-skill-row">
+                                <span class="rp-skill-cat"><i class="fas fa-chart-line"></i> Data Analysis:</span>
+                                <div class="rp-skill-tags">
+                                    <span class="rp-tag">Pandas</span>
+                                    <span class="rp-tag">NumPy</span>
+                                    <span class="rp-tag">Matplotlib</span>
+                                    <span class="rp-tag">Seaborn</span>
+                                    <span class="rp-tag">EDA</span>
+                                    <span class="rp-tag">Feature Engineering</span>
+                                </div>
+                            </div>
+                            <div class="rp-skill-row">
+                                <span class="rp-skill-cat"><i class="fas fa-brain"></i> Machine Learning:</span>
+                                <div class="rp-skill-tags">
+                                    <span class="rp-tag">Scikit-Learn</span>
+                                    <span class="rp-tag">XGBoost</span>
+                                    <span class="rp-tag">CatBoost</span>
+                                    <span class="rp-tag">LightGBM</span>
+                                    <span class="rp-tag">Random Forest</span>
+                                    <span class="rp-tag">Decision Trees</span>
+                                    <span class="rp-tag">Logistic & Linear Regression</span>
+                                    <span class="rp-tag">Ensemble Learning</span>
+                                </div>
+                            </div>
+                            <div class="rp-skill-row">
+                                <span class="rp-skill-cat"><i class="fas fa-cloud-upload-alt"></i> Deployment & Tools:</span>
+                                <div class="rp-skill-tags">
+                                    <span class="rp-tag">Streamlit</span>
+                                    <span class="rp-tag">FastAPI</span>
+                                    <span class="rp-tag">Git</span>
+                                    <span class="rp-tag">GitHub</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Key Projects -->
+                    <section class="rp-section">
+                        <h2 class="rp-section-title"><i class="fas fa-rocket"></i> Machine Learning Projects</h2>
+
+                        <div class="rp-project-card">
+                            <div class="rp-project-header">
+                                <h3 class="rp-project-title">Car Price Prediction</h3>
+                                <div class="rp-project-links">
+                                    <a href="https://github.com/sujal-chauhan2006/ML-Projects/tree/main/car_price_prediction" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Code</a>
+                                    <a href="https://car-price-prediction-sj.streamlit.app/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                                </div>
+                            </div>
+                            <p class="rp-project-desc">
+                                Built an ensemble regression model to estimate market values of used cars with advanced feature engineering. Deployed an interactive Streamlit app for real-time predictions.
+                            </p>
+                            <div class="rp-project-meta"><strong>Tech Stack:</strong> Python, Scikit-Learn, XGBoost, Streamlit</div>
+                        </div>
+
+                        <div class="rp-project-card">
+                            <div class="rp-project-header">
+                                <h3 class="rp-project-title">House Price Prediction</h3>
+                                <div class="rp-project-links">
+                                    <a href="https://github.com/sujal-chauhan2006/ML-Projects/tree/main/House_Price_Prediction" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Code</a>
+                                    <a href="https://house-price-prediction-sc.streamlit.app/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                                </div>
+                            </div>
+                            <p class="rp-project-desc">
+                                Developed a predictive property valuation system using exploratory data analysis and regression algorithms. Deployed live on Streamlit Cloud.
+                            </p>
+                            <div class="rp-project-meta"><strong>Tech Stack:</strong> Python, Pandas, Scikit-Learn, XGBoost, Streamlit</div>
+                        </div>
+
+                        <div class="rp-project-card">
+                            <div class="rp-project-header">
+                                <h3 class="rp-project-title">Email Spam Classifier</h3>
+                                <div class="rp-project-links">
+                                    <a href="https://github.com/sujal-chauhan2006/ML-Projects/tree/main/email_spam_classifier" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Code</a>
+                                    <a href="https://email-spam-classifier-sc.streamlit.app/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                                </div>
+                            </div>
+                            <p class="rp-project-desc">
+                                Implemented an NLP text classification application using TF-IDF vectorization and Naive Bayes classifier to filter email spam with high precision.
+                            </p>
+                            <div class="rp-project-meta"><strong>Tech Stack:</strong> Python, NLP, TF-IDF, Naive Bayes, Streamlit</div>
+                        </div>
+
+                        <div class="rp-project-card">
+                            <div class="rp-project-header">
+                                <h3 class="rp-project-title">Customer Churn Prediction</h3>
+                                <div class="rp-project-links">
+                                    <a href="https://github.com/sujal-chauhan2006/ML-Projects/tree/main/Customer_Churn_Prediction" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Code</a>
+                                    <a href="https://customer-churn-prediction-sc.streamlit.app/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                                </div>
+                            </div>
+                            <p class="rp-project-desc">
+                                Created a machine learning classification model predicting customer attrition patterns to support customer retention initiatives.
+                            </p>
+                            <div class="rp-project-meta"><strong>Tech Stack:</strong> Python, Pandas, Scikit-Learn, XGBoost, Streamlit</div>
+                        </div>
+                    </section>
+
+                    <!-- Experience -->
+                    <section class="rp-section">
+                        <h2 class="rp-section-title"><i class="fas fa-briefcase"></i> Professional Experience</h2>
+                        <div class="rp-item">
+                            <div class="rp-item-header">
+                                <div>
+                                    <h3 class="rp-item-title">Data Science / Machine Learning Intern</h3>
+                                    <p class="rp-item-sub">Actively Seeking Opportunities</p>
+                                </div>
+                                <span class="rp-badge rp-badge-open">Open to Work</span>
+                            </div>
+                            <p class="rp-text">
+                                Eager to apply machine learning algorithms, data engineering fundamentals, and predictive modeling in a collaborative team environment.
+                            </p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- Modal Footer / Sticky Download Action -->
+            <div class="resume-modal-footer">
+                <div class="resume-footer-info">
+                    <i class="fas fa-check-circle"></i> <span>Ready to save or share? Download the official document below.</span>
+                </div>
+                <div class="resume-footer-actions">
+                    <button class="btn-modal-action secondary" id="printResumeBtnFooter" type="button">
+                        <i class="fas fa-print"></i> Print / Save PDF
+                    </button>
+                    <a href="Assests/Sujal_Chauhan_Resume.docx" download class="btn-modal-action primary">
+                        <i class="fas fa-download"></i> Download Resume (.docx)
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
         <i class="fas fa-arrow-up"></i>

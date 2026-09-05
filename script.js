@@ -250,4 +250,65 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Resume Preview Modal Logic
+    const resumeModal = document.getElementById('resumeModal');
+    const resumeOverlay = document.getElementById('resumeModalOverlay');
+    const closeResumeBtn = document.getElementById('closeResumeModal');
+    const openResumeTriggers = document.querySelectorAll('.open-resume-trigger');
+    const printBtnHeader = document.getElementById('printResumeBtn');
+    const printBtnFooter = document.getElementById('printResumeBtnFooter');
+
+    const openResumeModal = (e) => {
+        if (e) e.preventDefault();
+        if (!resumeModal) return;
+
+        resumeModal.removeAttribute('hidden');
+        // Force reflow for smooth animation transition
+        void resumeModal.offsetWidth;
+        resumeModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    };
+
+    const closeResumeModal = () => {
+        if (!resumeModal) return;
+
+        resumeModal.classList.remove('active');
+        setTimeout(() => {
+            resumeModal.setAttribute('hidden', '');
+            document.body.style.overflow = '';
+        }, 300);
+    };
+
+    openResumeTriggers.forEach(trigger => {
+        trigger.addEventListener('click', openResumeModal);
+    });
+
+    if (closeResumeBtn) {
+        closeResumeBtn.addEventListener('click', closeResumeModal);
+    }
+
+    if (resumeOverlay) {
+        resumeOverlay.addEventListener('click', closeResumeModal);
+    }
+
+    // Close modal on Escape key press
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && resumeModal && !resumeModal.hasAttribute('hidden')) {
+            closeResumeModal();
+        }
+    });
+
+    // Print functionality
+    const handlePrintResume = () => {
+        window.print();
+    };
+
+    if (printBtnHeader) {
+        printBtnHeader.addEventListener('click', handlePrintResume);
+    }
+    if (printBtnFooter) {
+        printBtnFooter.addEventListener('click', handlePrintResume);
+    }
 });
+
